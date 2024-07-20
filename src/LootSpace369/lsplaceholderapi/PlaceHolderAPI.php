@@ -42,7 +42,8 @@ class PlaceHolderAPI {
     }
     
     /**
-     * @param $
+     * @param string|int $holder for identify the placeholder
+     * @param string|int $change change 
      */
     public static function update(string|int $holder, string|int $change) {
         if (in_array($holder, self::$placeholder)) {
