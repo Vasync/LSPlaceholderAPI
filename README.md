@@ -18,7 +18,7 @@ $placeholder = "{hi}";
 $replace = "hello";
 PlaceHolderAPI::register($placeholder, $replace);
 ```
-For example in text ui enter {hi} it will output:
+For example in text ui or string in more event enter {hi} it will output:
 ```
 hello
 ```
