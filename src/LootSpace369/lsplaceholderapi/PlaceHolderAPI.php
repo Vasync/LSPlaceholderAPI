@@ -27,13 +27,6 @@ class PlaceHolderAPI {
     }
     
     /**
-     * @callable
-     */
-    public static function registerTime(string|int $placeholder, callable $replace, int$time) {
-        
-    }
-    
-    /**
      * @param string|int $str
      */
     public static function replace(string|int $str): string {
