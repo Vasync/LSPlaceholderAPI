@@ -19,20 +19,20 @@ class EventListener implements Listener {
     * @param DataPacketSendEvent $event
     */
     public function onDataPacketSend(DataPacketSendEvent $event): void {
-        foreach ($event->getPackets() as $packet) {
-            
-            if ($packet instanceof TextPacket) $packet->message = PlaceHolderAPI::replace($packet->message);
-            
-            if ($packet instanceof ModalFormRequestPacket) {
-                $formData = json_decode($packet->formData, true);
-                $fData = fn(string $str) => $formData[$str] = PlaceHolderAPI::replace($formData[$str]);
-                
-                if (isset($formData["title"])) $fData("title");
-                if (isset($formData["body"])) $fData("body");
-                if (isset($formData["button"])) $fData("button");
-                if (isset($formData["button1"])) $fData("button1");
-                if (isset($formData["button2"])) $fData("button2");
-                $packet->formData = json_encode($formData);
+        foreach ($event->getTargets() as $target) {
+            foreach ($event->getPackets() as $packet) {
+                if ($packet instanceof TextPacket) $packet->message = PlaceHolderAPI::replace($packet->message);
+                if ($packet instanceof ModalFormRequestPacket) {
+                    $formData = json_decode($packet->formData, true);
+                    $fData = fn(string $str) => $formData[$str] = PlaceHolderAPI::replace($formData[$str]);
+                    
+                    if (isset($formData["title"])) $fData("title");
+                    if (isset($formData["body"])) $fData("body");
+                    if (isset($formData["button"])) $fData("button");
+                    if (isset($formData["button1"])) $fData("button1");
+                    if (isset($formData["button2"])) $fData("button2");
+                    $packet->formData = json_encode($formData);
+                }
             }
         }
     }
