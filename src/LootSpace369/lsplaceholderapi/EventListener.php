@@ -72,13 +72,4 @@ class EventListener implements Listener {
             $event->setQuitMessage(PlaceHolderAPI::replace($event->getQuitMessage()));
         }
     }
-
-    /**
-     * @param PlayerChatEvent $event
-     */
-    public function onPlayerChat(PlayerChatEvent $event): void {
-        if (!$event->getFormatter() instanceof Translatable) {
-            $event->setFormatter(PlaceHolderAPI::replace($event->getFormatter()));
-        }
-    }
 }
