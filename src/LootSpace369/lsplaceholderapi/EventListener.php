@@ -24,13 +24,18 @@ class EventListener implements Listener {
                 if ($packet instanceof TextPacket) $packet->message = PlaceHolderAPI::replace($packet->message);
                 if ($packet instanceof ModalFormRequestPacket) {
                     $formData = json_decode($packet->formData, true);
-                    $fData = fn(string $str) => $formData[$str] = PlaceHolderAPI::replace($formData[$str]);
                     
-                    if (isset($formData["title"])) $fData("title");
-                    if (isset($formData["body"])) $fData("body");
-                    if (isset($formData["button"])) $fData("button");
-                    if (isset($formData["button1"])) $fData("button1");
-                    if (isset($formData["button2"])) $fData("button2");
+                    if (isset($formData["title"])) $formData["title"] = PlaceHolderAPI::replace($formData["title"]);
+                    if (!is_array($formData["content"])) {
+                        if (isset($formData["content"])) $formData["content"] = PlaceHolderAPI::replace($formData["content"]);
+                    }else{
+                        foreach ($formData["content"] as $content => $value) if (isset($formData["content"][$content]["text"])) $formData["content"][$content]["text"] = PlaceHolderAPI::replace($formData["content"][$content]["text"]);
+                    }
+                    if (isset($formData["buttons"])) {
+                        foreach ($formData["buttons"] as $button => $value) if (isset($formData["buttons"][$button]["text"])) $formData["buttons"][$button]["text"] = PlaceHolderAPI::replace($formData["buttons"][$button]["text"]);
+                    }
+                    if (isset($formData["button1"])) $formData["button1"] = PlaceHolderAPI::replace($formData["button1"]);;
+                    if (isset($formData["button2"])) $formData["button2"] = PlaceHolderAPI::replace($formData["button2"]);
                     $packet->formData = json_encode($formData);
                 }
             }
