@@ -7,7 +7,7 @@ Placeholder for PocketMine-MP.
 use LootSpace369\lsplaceholderapi\PlaceHolderAPI;
 ```
 
-### Place this is in main:
+### Place this is in PluginBase file main:
 ```PHP
 PlaceHolderAPI::init($this);
 ```
