@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LootSpace369\lsplaceholderapi;
 
 use pocketmine\plugin\PluginBase;
+use Exception;
 
 class PlaceHolderAPI {
     
@@ -26,6 +27,13 @@ class PlaceHolderAPI {
     }
     
     /**
+     * @callable
+     */
+    public static function registerTime(string|int $placeholder, callable $replace, int$time) {
+        
+    }
+    
+    /**
      * @param string|int $str
      */
     public static function replace(string|int $str): string {
@@ -38,5 +46,16 @@ class PlaceHolderAPI {
             $str = str_replace($find, $replace, $str);
         }
         return $str;
+    }
+    
+    /**
+     * @param $
+     */
+    public static function update(string|int $holder, string|int $change) {
+        if (in_array($holder, self::$placeholder)) {
+            self::$placeholder[$holder] = $change;
+            return;
+        }
+        throw new Exception('Name placeholder $holder does not exist to change!');
     }
 }
