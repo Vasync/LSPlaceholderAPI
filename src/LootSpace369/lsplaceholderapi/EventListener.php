@@ -6,7 +6,11 @@ namespace LootSpace369\lsplaceholderapi;
 
 use LootSpace369\lsplaceholderapi\PlaceHolderAPI;
 use pocketmine\event\Listener;
-use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\{
+    PlayerJoinEvent,
+    PlayerChatEvent,
+    PlayerQuitEvent
+};
 use pocketmine\event\entity\EntitySpawnEvent;
 use pocketmine\event\server\DataPacketSendEvent;
 use pocketmine\network\mcpe\protocol\TextPacket;
@@ -57,6 +61,24 @@ class EventListener implements Listener {
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         if (!$event->getJoinMessage() instanceof Translatable) {
             $event->setJoinMessage(PlaceHolderAPI::replace($event->getJoinMessage()));
+        }
+    }
+
+    /**
+     * @param PlayerQuitEvent $event
+     */
+    public function onPlayerQuit(PlayerQuitEvent $event): void {
+        if (!$event->getQuitMessage() instanceof Translatable) {
+            $event->setQuitMessage(PlaceHolderAPI::replace($event->getQuitMessage()));
+        }
+    }
+
+    /**
+     * @param PlayerChatEvent $event
+     */
+    public function onPlayerChat(PlayerChatEvent $event): void {
+        if (!$event->getFormatter() instanceof Translatable) {
+            $event->setFormatter(PlaceHolderAPI::replace($event->getFormatter()));
         }
     }
 }
