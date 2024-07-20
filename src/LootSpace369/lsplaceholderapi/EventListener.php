@@ -8,7 +8,6 @@ use LootSpace369\lsplaceholderapi\PlaceHolderAPI;
 use pocketmine\event\Listener;
 use pocketmine\event\player\{
     PlayerJoinEvent,
-    PlayerChatEvent,
     PlayerQuitEvent
 };
 use pocketmine\event\entity\EntitySpawnEvent;
