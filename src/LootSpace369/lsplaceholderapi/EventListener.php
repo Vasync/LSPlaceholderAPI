@@ -16,7 +16,7 @@ use pocketmine\network\mcpe\protocol\TextPacket;
 use pocketmine\network\mcpe\protocol\ModalFormRequestPacket;
 use pocketmine\lang\Translatable;
 
-const THIN_TAG = "\xc2\xa7";
+const THIN_TAG = "\xc2\xa7\u{3000}";
 
 function toThin(array|string $arr) : array|string {
         $r = [];
