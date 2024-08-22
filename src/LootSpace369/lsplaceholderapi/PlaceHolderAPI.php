@@ -12,13 +12,6 @@ class PlaceHolderAPI {
     private static array $placeholder = [];
     
     /**
-     * @param Config $cfg
-     */
-    public static function init(PluginBase $plugin): void {
-        $plugin->getServer()->getPluginManager()->registerEvents(new EventListener(), $plugin);
-    }
-    
-    /**
      * @param string|int $placeholder
      * @param string|int $replace
      */
