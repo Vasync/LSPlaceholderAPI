@@ -1,0 +1,5 @@
+name: LSPlaceholderAPIThinText
+version: 1.0.3
+api: [4.0.0, 5.0.0]
+main: LootSpace369\lsplaceholderapi\Runner
+author: LootSpace369
