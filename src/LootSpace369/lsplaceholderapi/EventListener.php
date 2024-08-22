@@ -37,7 +37,7 @@ class EventListener implements Listener {
                     if (isset($formData["buttons"])) {
                         foreach ($formData["buttons"] as $button => $value) if (isset($formData["buttons"][$button]["text"])) $formData["buttons"][$button]["text"] = PlaceHolderAPI::replace($formData["buttons"][$button]["text"]);
                     }
-                    if (isset($formData["button1"])) $formData["button1"] = PlaceHolderAPI::replace($formData["button1"]);;
+                    if (isset($formData["button1"])) $formData["button1"] = PlaceHolderAPI::replace($formData["button1"]);
                     if (isset($formData["button2"])) $formData["button2"] = PlaceHolderAPI::replace($formData["button2"]);
                     $packet->formData = json_encode($formData);
                 }
